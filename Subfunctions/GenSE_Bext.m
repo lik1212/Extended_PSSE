@@ -117,7 +117,7 @@ for k_inst = 1 : num_inst
             break;
         end
         H_SE = get_H_SE(Y_L1L2L3, Y_012_Node_ID, x_k_hat); % Get the H matrix of all measurements of SE
-        H_k  = H_SE(H_flag_new,:);                             % Matrix of measurements just in z_hat
+        H_k  = sparse(H_SE(H_flag_new,:));                             % Matrix of measurements just in z_hat
         H_k(numel(H_flag) + 1 : end, :) = H_k(numel(H_flag) + 1 : end, :) / 2;  % Bext adjustment
         H_k(numel(H_flag) + 1 : end, num_Nodes * 3 + 1 : end) = 0;              % Bext adjustment
         % Solve SE, values for slack not in it, very important.
